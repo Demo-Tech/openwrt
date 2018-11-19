@@ -66,6 +66,19 @@ define Device/LinkIt7688
 endef
 TARGET_DEVICES += LinkIt7688
 
+define Device/DTech-One
+  FILESYSTEMS := ext4
+  KERNEL := kernel-bin | patch-dtb | uImage none
+  DTS := DTECH-ONE
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  SUPPORTED_DEVICES := dtech-one
+  DEVICE_TITLE := DTech One
+  IMAGES := uImage-dtb.bin rootfs.ext4
+  IMAGE/uImage-dtb.bin := append-kernel
+  IMAGE/rootfs.ext4 := append-rootfs
+endef
+TARGET_DEVICES += DTech-One
+
 define Device/mac1200r-v2
   DTS := MAC1200RV2
   DEVICE_TITLE := Mercury MAC1200R v2.0
